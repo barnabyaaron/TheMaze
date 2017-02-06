@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>The Maze</title>
+	<meta charset="utf-8" />
+    <link href="assets/css/main.css" media="all" rel="stylesheet" type="text/css" />
+    <!--<script src="assets/js/jquery-3.1.1.js"></script>-->
+    <script src="assets/js/jquery-3.1.1-dev.js"></script>
+    <script src="assets/js/plugins/json-2.6.min.js"></script>
+    <!--<script src="assets/js/crafty-0.7.1.js"></script>-->
+    <script src="assets/js/crafty-0.7.1-dev.js"></script>
+    <script src="assets/js/class.js"></script>
+
+    <!-- Game Files -->
+    <script src="app/settings.js"></script>
+
+    <!-- Initialize -->
+    <script type="text/javascript">
+        // All classes now loaded...
+        Class.classesLoaded();
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="body">
+            <div id="main" class="boxed">
+                <div id="title"></div>
+                <div id="canvas">
+                    <div id="cr-stage"></div>
+                    <div id="overlay"></div>
+                    <div id="overlay-contents"></div>
+                </div>
+            </div>
+            <div id="sidebar" class="boxed">
+                <div class="section">
+                    <textarea id="program"></textarea>
+                </div>
+                <div class="section">
+                    <button id="help-button" style="float: right;">Help</button>
+                    <button id="run-button">Execute</button>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: right;padding: 10px;clear:both;color: #888;">
+            <a href="#" id="reset-button">Reset Progress</a>
+        </div>
+    </div>
+    <div id="res">
+        <script>
+            var app = null;
+            $(function () {
+                app = App.start();
+            });
+        </script>
+    </div>
+</body>
+</html>
