@@ -3,7 +3,7 @@
 <head>
     <title>The Maze</title>
 	<meta charset="utf-8" />
-    <link href="assets/css/main.css" media="all" rel="stylesheet" type="text/css" />
+    <!--<link href="assets/css/main.css" media="all" rel="stylesheet" type="text/css" />-->
     <!--<script src="assets/js/jquery-3.1.1.js"></script>-->
     <script src="assets/js/jquery-3.1.1-dev.js"></script>
     <script src="assets/js/plugins/json-2.6.min.js"></script>
@@ -12,16 +12,21 @@
     <script src="assets/js/class.js"></script>
 
     <!-- Game Files -->
-    <script src="app/settings.js"></script>
+    <script src="app/game.js"></script>
 
     <!-- Initialize -->
     <script type="text/javascript">
         // All classes now loaded...
-        Class.classesLoaded();
+        //Class.classesLoaded();
     </script>
 </head>
 <body>
     <div id="wrapper">
+        <div id="body">
+            <div id="cr-stage"></div>
+        </div>
+    </div>
+    <!--<div id="wrapper">
         <div id="body">
             <div id="main" class="boxed">
                 <div id="title"></div>
@@ -47,11 +52,8 @@
     </div>
     <div id="res">
         <script>
-            var app = null;
-            $(function () {
-                app = App.start();
-            });
+            
         </script>
-    </div>
+    </div>-->
 </body>
 </html>
