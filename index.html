@@ -12,11 +12,14 @@
     <script src="assets/js/class.js"></script>
 
     <!-- Game Files -->
+    <script src="app/plugins/tiled_map.js"></script>
+    <script src="app/maps/levels_json.js"></script>
+    <script src="app/app.js"></script>
 
     <!-- Initialize -->
     <script type="text/javascript">
         // All classes now loaded...
-        //Class.classesLoaded();
+        Class.classesLoaded();
     </script>
 </head>
 <body>
@@ -25,5 +28,11 @@
             <div id="cr-stage"></div>
         </div>
     </div>
+    <script>
+        var app = null;
+        $(function () {
+            app = App.start();
+        });
+    </script>
 </body>
 </html>
