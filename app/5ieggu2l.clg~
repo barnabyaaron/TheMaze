@@ -1,0 +1,93 @@
+﻿Class.subclass('Levels', {
+    CURRENT_MAP: null,
+
+    init: function () {
+        // Load all scenes
+        for (var i = 0; i < Levels.MAPS.length; i++) {
+            var level = new Levels(i);
+        }
+    },
+
+    setupScenes: function() {
+        
+    }
+}, {
+    init: function(levelId) {
+        this.id = levelId;
+        this.mapData = Levels.MAPS[this.id];
+
+        Crafty.scene(this.mapData.name,
+                function () {
+                    Crafty.background('black');
+
+                    this.generateMap(this.mapData);
+                });
+    },
+
+    generateMap: function (map) {
+        Levels.CURRENT_MAP = map;
+
+        // Place base tiles
+        for (var x = 0; x < App.STAGE_WIDTH; x++) {
+            for (var y = 0; y < App.STAGE_HEIGHT; y++) {
+                groundNumber = Crafty.math.randomInt(1, 20);
+                if (groundNumber === 20) groundNumber = 2;
+                else if (groundNumber > 17) groundNumber = 3;
+                else if (groundNumber > 11) groundNumber = 4;
+                else groundNumber = 1;
+
+                Crafty.e('2D, DOM, ' + map.images.baseTile + groundNumber)
+                    .attr({ x: x * 32, y: y * 32, w: 32, h: 32, z: 2 });
+
+                if (App.TESTING_GRID) {
+                    Crafty.e('2D, DOM, Text')
+                        .attr({ x: x * 32, y: y * 32, w: 32, h: 32, z: 2 })
+                        .text(x + ', ' + y)
+                        .css('font-family', 'arial')
+                        .css('font-size', '8px')
+                        .css('color', 'black')
+                        .css('border', 'black 0.5px dashed');
+                }
+            }
+        }
+
+        // Load Map Tiles
+        for (var i = 0; i < map.tiles.length; i++) {
+
+        }
+    }
+});
+
+Levels.MAPS = [
+    {
+        "name": "intro",
+        "settings": {},
+        "images": {
+            "baseTile": "dirt",
+            "waterTile": "water"
+        },
+        "tiles": [
+            { 'x': 9, 'y': 0, 'sprite': '_top_left' },
+            { 'x': 10, 'y': 0, 'sprite': '_top_right' },
+
+            { 'x': 9, 'y': 1, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 2, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 3, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 4, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 5, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 6, 'sprite': '_center_left' },
+            { 'x': 9, 'y': 7, 'sprite': '_center_left' },
+
+            { 'x': 10, 'y': 1, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 2, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 3, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 4, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 5, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 6, 'sprite': '_center_right' },
+            { 'x': 10, 'y': 7, 'sprite': '_center_right' },
+
+            { 'x': 9, 'y': 8, 'sprite': '_bottom_left' },
+            { 'x': 10, 'y': 8, 'sprite': '_bottom_right' }
+        ]
+    }
+];
