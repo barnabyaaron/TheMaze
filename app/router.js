@@ -2,15 +2,20 @@
         'jquery',
         'underscore',
         'backbone',
-        'views/home/show'
+        'views/home/show',
+        'views/levels/show'
     ],
     function($, _, Backbone, home) {
         var AppRouter = Backbone.Router.extend({
             routes: {
-                '': 'home'
+                '': 'home',
+                'levels/:id': 'level'
             },
             home: function() {
                 home.render();
+            },
+            level: function(id) {
+                level.render(id);
             }
         });
 

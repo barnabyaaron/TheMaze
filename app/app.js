@@ -1,15 +1,18 @@
 ﻿define([
         'crafty',
-        'router',
         'game/config',
-        'game/viewport'
+        'game/viewport',
+        'collections/scenes'
     ],
-    function(Crafty, router, gameConfig, viewport) {
+    function (Crafty, gameConfig, viewport, scenes) {
         var initialize = function() {
-            Crafty.init(viewport.width, viewport.height);
+            Crafty.init(viewport.width, viewport.height, "wrapper");
+            Crafty.paths({ images: "assets/" });
 
             viewport.initialize();
-            router.initialize();
+
+            // Start
+            scenes.findByName("menu").load();
         };
 
         return {

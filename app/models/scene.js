@@ -15,7 +15,7 @@
                 var scene = this;
 
                 return Crafty.scene(this.get("name"),
-                    function() {
+                    function () {
                         init(scene.optionsBuffer);
                     },
                     this.get("uninit"));
@@ -24,9 +24,9 @@
                 this.optionsBuffer = options || {};
 
                 var sceneName = this.get("name");
-
+                
                 assets.loadByScene(sceneName,
-                    function() {
+                    function () {
                         Crafty.scene(sceneName);
                         this.optionsBuffer = {};
                     });

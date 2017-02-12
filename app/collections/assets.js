@@ -8,7 +8,7 @@
         var Assets = Backbone.Collection.extend({
             model: Asset,
             findByScene: function(scene) {
-                return this.filter(function(model) {
+                return this.filter(function (model) {
                     return _.contains(model.get("scenes"), scene);
                 });
             },
@@ -21,18 +21,19 @@
                     onError: function(e) {}
                 }
 
-                // FIXME ?
-                return callbacks.onLoad();
+                var loadObject = {};
 
-                // Broken on IE below
-                var assetsPath = _.map(assets, function(asset) { return asset.path(); });
-
-                if (_.isEmptyObject(assetsPath)) {
-                    return callback.onLoad();
+                //var assetsPath = _.map(assets, function (asset) { return asset.path(); });
+                _.every(assets,
+                    function(asset) {
+                        loadObject = _.extend(loadObject, asset.get("data"));
+                    });
+                
+                if (_.isEmpty(loadObject)) {
+                    return callbacks.onLoad();
                 }
 
-                // FIXME ?
-                Crafty.load(assetsPath,
+                Crafty.load(loadObject,
                     function() {
                         _.invoke(assets, 'onLoaded');
                         callbacks.onLoad();

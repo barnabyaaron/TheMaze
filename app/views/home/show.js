@@ -11,6 +11,8 @@
                 $("#inner_background").html("");
                 scenes.findByName("blank").load();
                 this.$el.html(_show);
+
+                scenes.findByName("menu").load();
             }
         });
 

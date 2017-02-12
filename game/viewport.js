@@ -7,7 +7,7 @@
             height: 580,
             initialize: function() {
                 var viewport = this;
-                var $viewport = $("#cr-state, #wrapper, #inner_background");
+                var $viewport = $("#cr-stage, #wrapper, #inner_background");
                 var $outer = $("#outer_background");
 
                 function replaceViewport() {

@@ -1,7 +1,7 @@
-﻿define([
+﻿ define([
         'backbone',
         'models/scene',
-        'game/scene'
+        'game/scenes'
     ],
     function(Backbone, Scene, scenesData) {
         var Scenes = Backbone.Collection.extend({
